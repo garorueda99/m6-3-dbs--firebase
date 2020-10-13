@@ -5,14 +5,13 @@ import Avatar from './Avatar';
 import { AppContext } from './AppContext';
 
 const App = () => {
-  const {} = useContext(AppContext);
-
+  const { signInWithGoogle } = useContext(AppContext);
   return (
     <StyledPageWrapper>
       <StyledHeader>
-        <button>Sign In</button>
+        <button onClick={signInWithGoogle}>Sign In</button>
       </StyledHeader>
-      <StyledContainer>{message}</StyledContainer>
+      <StyledContainer>{/* {message} */}</StyledContainer>
     </StyledPageWrapper>
   );
 };
