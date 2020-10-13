@@ -22,9 +22,23 @@ const providers = {
 
 export const AppContext = createContext(null);
 
-const AppProvider = ({ children, signInWithGoogle }) => {
+const AppProvider = ({ children, signInWithGoogle, signOut, user }) => {
+  const [appUser, setAppUser] = useState({});
+  const handleSignOut = () => {
+    signOut();
+    setAppUser({});
+  };
+  useEffect(() => {
+    if (user) {
+      setAppUser({
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
+      });
+    }
+  }, [user]);
   return (
-    <AppContext.Provider value={{ signInWithGoogle }}>
+    <AppContext.Provider value={{ appUser, signInWithGoogle, handleSignOut }}>
       {children}
     </AppContext.Provider>
   );

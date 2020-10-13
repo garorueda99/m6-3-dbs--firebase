@@ -7,6 +7,7 @@ const StyledAvatar = styled.img`
   border-radius: 50%;
   height: 36px;
   width: 36px;
+  margin: 0 10px;
 `;
 
 export default Avatar;
